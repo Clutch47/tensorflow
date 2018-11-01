@@ -1,4 +1,4 @@
-#!/us:sr/bin/python3
+#!/usr/bin/python3
 import tensorflow as tf
 import numpy as np
 import pandas as pd
@@ -79,9 +79,9 @@ optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost) #cost and optim
 with tf.Session() as sess:
     init = tf.global_variables_initializer() #initialization
     sess.run(init) 
-#    saver_h1 = tf.train.Saver({'h1':encoder_h1})
-#    saver_b1 = tf.train.Saver({'b1':encoder_b1})
-#    saver_b4 = tf.train.Saver({'b4':decoder_b1})
+    saver_h1 = tf.train.Saver({'h1':encoder_h1})
+    saver_b1 = tf.train.Saver({'b1':encoder_b1})
+    saver_b4 = tf.train.Saver({'b4':decoder_b1})
     # Training cycle
     for epoch in range(6001):
         # Run optimization op (backprop) and cost op (to get cost value)
@@ -89,9 +89,9 @@ with tf.Session() as sess:
         # Display logs per epoch step
         if epoch % 1 == 0:
             print("Epoch:", '%04d' % (epoch+1), sess.run(error_train, feed_dict={X: train_dataset}), sess.run(error_pred, feed_dict={X_valid: valid_dataset}))
-#    save_path = saver_h1.save(sess, 'save/save_h1/encoder_h1.ckpt', global_step = 6001)
-#    save_path = saver_b1.save(sess, 'save/save_b1/encoder_b1.ckpt', global_step = 6001)
-#    save_path = saver_b4.save(sess, 'save/save_b4/decoder_b1.ckpt', global_step = 6001)
+    save_path = saver_h1.save(sess, 'save/save_h1/encoder_h1.ckpt', global_step = 6001)
+    save_path = saver_b1.save(sess, 'save/save_b1/encoder_b1.ckpt', global_step = 6001)
+    save_path = saver_b4.save(sess, 'save/save_b4/decoder_b1.ckpt', global_step = 6001)
     time_end = time.time()
     print ('time cost training:', time_end - time_start, 's')
     np.set_printoptions(threshold = np.NaN)
