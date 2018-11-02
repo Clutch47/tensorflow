@@ -84,7 +84,7 @@ diff_pred = abs(y_pred - X_valid)
 error_pred = tf.reduce_sum(diff_pred)
 
 # Define cost and optimizer, minimize the squared error
-cost = tf.reduce_sum(tf.square(diff_train)) #error train
+cost = tf.reduce_sum(tf.square(diff_train)) 
 optimizer = tf.train.AdamOptimizer(learning_rate).minimize(cost) #cost and optimizer 
 
 # Launch the graph
