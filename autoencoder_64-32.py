@@ -18,7 +18,7 @@ valid_dataset = np.array(input_valid).astype(np.float32) #read test_dataset by n
 
 # Parameters
 learning_rate = 0.01
-seed = 1540616162.7054856
+seed = 
 # tf Graph input 
 X = tf.placeholder(tf.float32, shape=[2000, 64])
 X_valid= tf.placeholder(tf.float32, shape=[1669, 64])
